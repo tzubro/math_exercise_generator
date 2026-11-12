@@ -30,30 +30,23 @@ See [docs/API_CONTRACT.md](docs/API_CONTRACT.md) for shared models, API shapes,
 and module boundaries. SQLite data is stored under the current user's local
 application data directory; set `MATH_TEST_GENERATOR_DATA_DIR` to override it.
 
-## Download and run on another Windows computer
+## Install on another Windows computer
 
-After this project is published to GitHub, the user can select **Code → Download
-ZIP**, extract the folder, and run `scripts\setup_windows.ps1` in PowerShell.
-Alternatively, clone it with Git. Setup creates a local Python virtual
-environment, installs dependencies, and builds the frontend; it does not
-require an installer or administrator access.
+Download `MathTestGenerator-Setup-<version>-x64.exe` from the repository's
+[GitHub Releases](https://github.com/tzubro/math_exercise_generator/releases)
+page, run it, and launch the app from the Start menu or
+optional desktop shortcut. The installer is per-user and does not require
+administrator access, Python, or Node.js. The app opens in the browser and runs
+locally on that computer.
 
-Requirements are Git (for cloning), Python 3.10+, and Node.js 20+. To start the
-app, run these commands from the extracted project folder in PowerShell:
+The database remains under `%LOCALAPPDATA%\MathTestGenerator` when the app is
+updated or uninstalled. To release an update, push a version tag such as
+`v0.1.0`; GitHub Actions builds the Windows installer and attaches it to the
+corresponding release.
 
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start_windows.ps1
-```
-
-The start script opens the browser and runs the API on
-the local computer. Keep the PowerShell window open while using the app;
-press Ctrl+C to stop the server. The database is stored under
-`%LOCALAPPDATA%\MathTestGenerator`, separate from the downloaded source folder.
-
-For updates, a Git checkout can use `git pull` and rerun
-`scripts\setup_windows.ps1`; the local database remains intact. ZIP downloads
-must be downloaded and extracted again for updates.
+Developers who want to run from source can use the separate
+`scripts\setup_windows.ps1` and `scripts\start_windows.ps1` scripts. Those
+require Python 3.10+ and Node.js 20+.
 
 Ollama is optional and is not bundled. Local AI import uses the configured
 Ollama model; the user must install Ollama and pull that model separately.

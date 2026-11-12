@@ -2,7 +2,9 @@ node_modules/
 frontend/dist/
 __pycache__/
 *.py[cod]
+*.spec
 .venv/
+.venv-packaging/
 venv/
 .env
 .env.*
